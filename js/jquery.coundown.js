@@ -110,3 +110,27 @@
 	};
 
 })(jQuery);
+
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
+  // Masukkan nama ke dalam elemen
+  window.addEventListener("DOMContentLoaded", function () {
+    const encodedName = getQueryParam("to");
+    if (encodedName) {
+      const name = decodeURIComponent(encodedName.replace(/\+/g, ' '));
+      document.getElementById("Name").textContent = name;
+    } else {
+      document.getElementById("Name").textContent = "Tamu Undangan";
+    }
+  });
+  
+var to = GetURLParameter("to");
+if (to) {
+const decodedTo = decodeURIComponent(to.replace(/\+/g, ' '));
+document.getElementById("Name").textContent = decodedTo;
+} else {
+document.getElementById("Name").textContent = "-";
+}
